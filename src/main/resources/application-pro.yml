@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/myblog?useUnicode=true&characterEncoding=utf-8
+  jpa:
+    hibernate:
+      ddl-auto: none #生产环境下 要是none，为true会在你项目重启的时候，去根据你的实体类更改你的表结构
+    database: mysql
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+logging:
+  level:
+    root: warn
+    com.li: info
+server:
+  port: 5218

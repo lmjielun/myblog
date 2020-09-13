@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="admin/_fragments :: head(~{::title})">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>博客管理</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+  <link rel="stylesheet" href="../../static/css/me.css" >
+</head>
+<body>
+
+  <!--导航-->
+  <nav th:replace="admin/_fragments :: menu(0)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small" >
+    <div class="ui container">
+      <div class="ui inverted secondary stackable menu">
+        <h2 class="ui teal header item">管理后台</h2>
+        <a href="#" class="active m-item item m-mobile-hide"><i class="mini home icon"></i>博客</a>
+        <a href="#" class=" m-item item m-mobile-hide"><i class="mini idea icon"></i>分类</a>
+        <a href="#" class="m-item item m-mobile-hide"><i class="mini tags icon"></i>标签</a>
+        <div class="right m-item m-mobile-hide menu">
+          <div class="ui dropdown  item">
+            <div class="text">
+              <img class="ui avatar image"  src="../../static/image/tou.jpg" th:src="@{/image/tou.jpg}"  ></img>
+              limingheng
+            </div>
+            <i class="dropdown icon"></i>
+            <div class="menu">
+              <a href="#" th:href="@{/admin/logout}" class="item">注销</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="#" class="ui menu toggle black icon button m-right-top m-mobile-show">
+      <i class="sidebar icon"></i>
+    </a>
+  </nav>
+
+
+  <!--中间内容-->
+  <div  class="m-container-small m-padded-tb-big">
+    <div class="ui container">
+      <div class="ui success large  message">
+        <h3>Hi,</h3>
+        <p>李明恒，欢迎登录！</p>
+      </div>
+
+      <img src="https://unsplash.it/1000/400?image=1005" alt="" class="ui rounded bordered fluid image">
+    </div>
+  </div>
+
+  <br>
+  <br>
+
+  <!--底部开始-->
+  <!--vertical 也是不带圆角的意思-->
+  <footer th:replace="admin/_fragments :: footer" class="ui inverted vertical segment m-padded-tb-massive m-shadow-top">
+    <div class="ui container">
+      <!--grid 列 分为16份-->
+      <div class="ui center aligned inverted divided  stackable grid">
+        <!--占三分 一列 wide 填满-->
+        <div class="three wide column">
+          <!--rounded 圆角的图片-->
+          <div class="ui inverted link list">
+            <div class="item">
+              <img src="../../static/image/mywx.jpg" class="ui rounded image"
+                   alt="博客作者微信二维码" style="width: 110px">
+            </div>
+          </div>
+        </div>
+        <!--占三分 一列 wide 填满-->
+        <div class="three wide column">
+          <h4 class="ui inverted m-text-opacity-max">最新博客</h4>
+          <div class="ui inverted link list">
+            <a href="#" class="item">用户故事（liming）</a>
+            <a href="#" class="item">学习清单（liming）</a>
+            <a href="#" class="item">努力学习（liming）</a>
+          </div>
+        </div>
+        <!--占三分 一列 wide 填满-->
+        <div class="three wide column">
+          <h4 class="ui inverted m-text-opacity-max">联系我</h4>
+          <div class="ui inverted link list">
+            <a href="#" class="item">Email：xxxxx@126.com</a>
+            <a href="#" class="item">QQ:xxxxxxxxx</a>
+          </div>
+        </div>
+        <!--占七分 一列 wide 填满-->
+        <div class="seven wide column">
+          <h4 class="ui inverted m-text-opacity-max">comment</h4>
+          <p class="m-text-thin m-text-spaced m-text-opacity-mini m-text-size-mini" >这是我的个人博客 欢迎大家参观 交流 我会分享 工作中 学习中的一些知识和方法</p>
+          <p class="m-text-thin m-text-spaced m-text-opacity-mini m-text-size-mini" >有钱  将生活过好  没钱  将心情过好</p>
+          <p class="m-text-thin m-text-spaced m-text-opacity-mini m-text-size-mini" >努力过 学过  用过 就好</p>
+        </div>
+      </div>
+    </div>
+    <!--横向分割线-->
+    <div class="ui inverted section divider">
+      <br>
+      <p align="center" class="m-text-thin m-text-spaced m-text-opacity-mini stackable">
+        Copyrigth @ 2016-1017 LiMingHeng Designed by Lirenmi
+      </p>
+    </div>
+  </footer>
+  <!--底部结束-->
+  <!--/*/<th:block th:replace="_fragments :: script">/*/-->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+  <!--/*/</th:block>/*/-->
+  <script>
+    $('.menu.toggle').click(function () {
+      $('.m-item').toggleClass('m-mobile-hide');
+    });
+
+    $('.ui.dropdown').dropdown({
+      on : 'hover'
+    });
+
+  </script>
+</body>
+</html>

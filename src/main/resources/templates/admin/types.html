@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <!--移动端预览设置-->
+    <meta name="viewport" content="width=device-width,init-scale=1.0">
+    <title>分类管理</title>
+    <!--cdn方式引入资源 官网直接找到链接-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <!--引入自己的css文件-->
+    <link rel="stylesheet" href="../../static/css/me.css" th:href="@{/css/me.css}">
+</head>
+<body>
+    <!--导航开始-->
+    <!--使用
+        semantic前端框架
+        ui 代表使用组件
+        inverted 代表反转，黑色转白色，白色转黑色，等等
+        attached 代表不带圆角
+        segment  线框，出来效果就是页面上方一个黑色长条
+        m-padded-tb-mini 是引用自己写的css文件，m-padded-tb-mini代表类 -->
+    <nav th:replace="admin/_fragments :: menu(2)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small m-margin-bottom-mini">
+        <div class="ui container">
+            <!--stackable 适配移动端手机端-->
+            <div class="ui inverted secondary stackable menu">
+                <!--蓝色的blog的log显示-->
+                <h3 class="ui teal header item">Category</h3>
+                <!-- icon 代表图标组件
+                    <i>标签，代表一个image小图标，也就是一个小的Logo图片
+                    home就是个房子的图片，idea就是个灯泡的图片，tags就是标签的图片，info就是一个I的图片
+                    m-mobile-hide 自己的css方法，移动端的时候，不显示导航名称，显示一个"三"按钮
+                    m-item 也是class名称而已-->
+                <a href="#" class="active m-item item m-mobile-hide"><i class="mini home icon"></i>博客</a>
+                <a href="#" class="m-item item m-mobile-hide"><i class="mini idea icon"></i>分类</a>
+                <a href="#" class="m-item item m-mobile-hide"><i class="mini tags icon"></i>标签</a>
+                <!--右侧登录头像-->
+                <div class="right m-item m-mobile-hide menu">
+                    <div class="ui dropdown item">
+                        <div class="text">
+                            <img class="ui avatar image"  src="../../static/image/tou.jpg" th:src="@{/image/tou.jpg}"  ></img>
+                            limingheng
+                        </div>
+                        <!--下拉图标-->
+                        <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <a href="#" class="item">注销</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- m-mobile-show 在移动端的时候才显示按钮，电脑端显示导航文字-->
+        <!-- menu toggle 没有什么意义，就是给jquery用，当你点击的时候，显示导航，再点击，隐藏导航，本可以是id的，这里没用id-->
+        <a href="#" class="ui icon menu toggle  black button m-button-top-right m-mobile-show">
+            <i class="sidebar icon"></i>
+        </a>
+    </nav>
+    <!--导航结束-->
+    <!--二级导航-->
+    <div class="ui attached pointing menu m-margin-top-mini">
+        <div class="ui container">
+            <div class="right menu">
+                <a href="" class="item">发布</a>
+                <a href="" class="teal active item ">列表</a>
+            </div>
+        </div>
+    </div>
+    <!--内容开始-->
+    <div class="m-container-small mobile stackable m-margin-top-small">
+        <div class="ui container">
+            <!--表格-->
+            <table class="ui celled table">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>名称</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <!--第一行内容-->
+                <tr th:eache="type,iterStat : ${page.content}">
+                    <td th:text="${iterStat.count}">1</td>
+                    <td th:text="${type.name}">java</td>
+                    <td width="230px">
+                        <a href="#" th:href="@{admin/types/{id}/input(id={type.id})}" class="ui mini basic teal button">编辑</a>
+                        <a href="#" th:href="@{admin/types/{id}/delete(id={type.id})}" class="ui mini basic red button">删除</a>
+                    </td>
+                </tr>
+
+
+                </tbody>
+
+                <!--上一页 下一页-->
+                <tfoot>
+                <tr>
+                    <th colspan="6">
+                        <div class="ui mini pagination menu">
+                            <a th:href="@{admin/types(page={page.number}-1)}" href="#" class="item">上一页</a>
+                            <a th:href="@{admin/types(page={page.number}+1)}" href="#" class="item">下一页</a>
+                        </div>
+                    </th>
+
+                    <!--新增-->
+                    <div  class="field" style="margin-right: 10px">
+                        <a  th:href="@{admin/types/input}"  class="ui mini orange basic button"><i class="edit icon"></i>新增</a>
+                    </div>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    <!--内容结束-->
+
+    <!--底部开始-->
+    <!--vertical 也是不带圆角的意思-->
+    <footer class="ui inverted vertical segment m-padded-tb-massive m-shadow-top">
+        <div class="ui container">
+            <!--grid 列 分为16份-->
+            <div class="ui center aligned inverted divided  stackable grid">
+                <!--占三分 一列 wide 填满-->
+                <div class="three wide column">
+                    <!--rounded 圆角的图片-->
+                    <div class="ui inverted link list">
+                        <div class="item">
+                            <img src="../../static/image/mywx.jpg" class="ui rounded image"
+                                 alt="博客作者微信二维码" style="width: 110px">
+                        </div>
+                    </div>
+                </div>
+                <!--占三分 一列 wide 填满-->
+                <div class="three wide column">
+                    <h4 class="ui inverted m-text-opacity-max">最新博客</h4>
+                    <div class="ui inverted link list">
+                        <a href="#" class="item">用户故事（liming）</a>
+                        <a href="#" class="item">学习清单（liming）</a>
+                        <a href="#" class="item">努力学习（liming）</a>
+                    </div>
+                </div>
+                <!--占三分 一列 wide 填满-->
+                <div class="three wide column">
+                    <h4 class="ui inverted m-text-opacity-max">联系我</h4>
+                    <div class="ui inverted link list">
+                        <a href="#" class="item">Email：xxxxx@126.com</a>
+                        <a href="#" class="item">QQ:xxxxxxxxx</a>
+                    </div>
+                </div>
+                <!--占七分 一列 wide 填满-->
+                <div class="seven wide column">
+                    <h4 class="ui inverted m-text-opacity-max">comment</h4>
+                    <p class="m-text-thin m-text-spaced m-text-opacity-mini m-text-size-mini" >这是我的个人博客 欢迎大家参观 交流 我会分享 工作中 学习中的一些知识和方法</p>
+                    <p class="m-text-thin m-text-spaced m-text-opacity-mini m-text-size-mini" >有钱  将生活过好  没钱  将心情过好</p>
+                    <p class="m-text-thin m-text-spaced m-text-opacity-mini m-text-size-mini" >努力过 学过  用过 就好</p>
+                </div>
+            </div>
+        </div>
+        <!--横向分割线-->
+        <div class="ui inverted section divider">
+            <br>
+            <p align="center" class="m-text-thin m-text-spaced m-text-opacity-mini stackable">
+                Copyrigth @ 2016-1017 LiMingHeng Designed by Lirenmi
+            </p>
+        </div>
+    </footer>
+    <!--底部结束-->
+
+<!--cdn方式引入资源 官网直接找到链接 jquery资源 http://www.jsdelivr.com/ -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <script>
+        /*获取到导航栏上class的名称，名为：menu toggle*/
+        $('.menu.toggle ').click(function () {
+            /*再使用Jquery获取class名为 m-item，调整里边的  m-mobile-hide 样式，这个样式是我们自己写的*/
+            /*toggleClass 效果为：如果没有就显示，如果有就去掉*/
+            $('.m-item').toggleClass(' m-mobile-hide');
+        });
+        /*初始化下拉组件*/
+        $('.ui.dropdown').dropdown({
+            on : 'hover'
+        });
+    </script>
+</body>
+</html>

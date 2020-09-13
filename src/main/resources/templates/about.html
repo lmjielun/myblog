@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--移动端预览设置-->
+    <meta name="viewport" content="width=device-width,init-scale=1.0">
+    <title>关于我</title>
+    <!--cdn方式引入资源 官网直接找到链接-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <!--引入自己的css文件-->
+    <link rel="stylesheet" href="../static/css/me.css">
+</head>
+<body>
+    <!--导航开始-->
+    <!--使用
+        semantic前端框架
+        ui 代表使用组件
+        inverted 代表反转，黑色转白色，白色转黑色，等等
+        attached 代表不带圆角
+        segment  线框，出来效果就是页面上方一个黑色长条
+        m-padded-tb-mini 是引用自己写的css文件，m-padded-tb-mini代表类 -->
+    <nav class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
+        <div class="ui container">
+            <!--stackable 适配移动端手机端-->
+            <div class="ui inverted secondary stackable menu">
+                <!--蓝色的blog的log显示-->
+                <h2 class="ui teal header item">blog</h2>
+                <!-- icon 代表图标组件
+                    <i>标签，代表一个image小图标，也就是一个小的Logo图片
+                    home就是个房子的图片，idea就是个灯泡的图片，tags就是标签的图片，info就是一个I的图片
+                    m-mobile-hide 自己的css方法，移动端的时候，不显示导航名称，显示一个"三"按钮
+                    m-item 也是class名称而已-->
+                <a href="#" class="m-item item m-mobile-hide"><i class="mini home icon"></i>首页</a>
+                <a href="#" class="m-item item m-mobile-hide"><i class="mini idea icon"></i>分类</a>
+                <a href="#" class="m-item item m-mobile-hide"><i class="mini tags icon"></i>标签</a>
+                <a href="#" class="m-item item m-mobile-hide"><i class="mini clone icon"></i>归档</a>
+                <a href="#" class="active m-item item m-mobile-hide"><i class="mini info icon"></i>关于我</a>
+                <!--搜索框位置-->
+                <div class="m-item right item m-mobile-hide">
+                    <!--搜索框的组件 transparent 透明 -->
+                    <div class="ui mobile icon input">
+                        <!--input框-->
+                        <input type="text" placeholder="Search....">
+                        <i class="search link icon"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- m-mobile-show 在移动端的时候才显示按钮，电脑端显示导航文字-->
+        <!-- menu toggle 没有什么意义，就是给jquery用，当你点击的时候，显示导航，再点击，隐藏导航，本可以是id的，这里没用id-->
+        <a href="#" class="ui icon menu toggle  black button m-button-top-right m-mobile-show">
+            <i class="sidebar icon"></i>
+        </a>
+    </nav>
+    <!--导航结束-->
+
+    <!--内容开始-->
+    <div class=" mobile stackable m-margin-top-small m-margin-bottom-big">
+        <div class="ui container">
+            <div class="ui stackable grid">
+                <!--图片-->
+                <div class="eleven wide column ">
+                    <div class="ui segment">
+                        <img src="../static/image/bg2.jpg" alt="" class="ui rounded image">
+                    </div>
+                </div>
+                <!--右侧内容-->
+                <div class="five wide column">
+                    <div class="ui top attached segment">
+                        <div class="ui header">关于我</div>
+                        <div class="ui attached segment">
+                            <p>文字</p>
+                            <p>文字</p>
+                        </div>
+                        <!--标签组-->
+                        <div class="ui attached segment">
+                            <div class="ui orange basic left pointing label">编程</div>
+                            <div class="ui orange basic left pointing label">编程</div>
+                            <div class="ui orange basic left pointing label">编程</div>
+                            <div class="ui orange basic left pointing label">编程</div>
+                        </div>
+                        <!--标签组-->
+                        <div class="ui attached segment">
+                            <div class="ui teal basic left pointing label">java</div>
+                            <div class="ui teal basic left pointing label">jquery</div>
+                        </div>
+                        <!--外部连接-->
+                        <div class="ui bottom attached segment">
+                            <!--github-->
+                            <a href="#" class="ui circular icon button">
+                                <i class="github icon"></i>
+                            </a>
+                            <!--微信二维码-->
+                            <a href="#" class="ui wechart circular icon button">
+                                <i class="weixin icon"></i>
+                            </a>
+                            <!--class="...qq 这个qq是自己写的css"-->
+                            <a href="#" class="ui qq circular icon button" data-content="304204178" data-position="bottom center">
+                                <i class="qq icon"></i>
+                            </a>
+                        </div>
+                        <!--微信二维码-->
+                        <div class="ui wechart-qr flowing popup  transition hidden">
+                            <img src="../static/image/mywx.jpg" alt="" class="ui rounded image" style="width: 100px">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--内容结束-->
+
+    <!--底部开始-->
+    <!--vertical 也是不带圆角的意思-->
+    <footer class="ui inverted vertical segment m-padded-tb-massive m-shadow-top">
+        <div class="ui container">
+            <!--grid 列 分为16份-->
+            <div class="ui center aligned inverted divided  stackable grid">
+                <!--占三分 一列 wide 填满-->
+                <div class="three wide column">
+                    <!--rounded 圆角的图片-->
+                    <div class="ui inverted link list">
+                        <div class="item">
+                            <img src="../static/image/mywx.jpg" class="ui rounded image"
+                                 alt="博客作者微信二维码" style="width: 110px">
+                        </div>
+                    </div>
+                </div>
+                <!--占三分 一列 wide 填满-->
+                <div class="three wide column">
+                    <h4 class="ui inverted m-text-opacity-max">最新博客</h4>
+                    <div class="ui inverted link list">
+                        <a href="#" class="item">用户故事（liming）</a>
+                        <a href="#" class="item">学习清单（liming）</a>
+                        <a href="#" class="item">努力学习（liming）</a>
+                    </div>
+                </div>
+                <!--占三分 一列 wide 填满-->
+                <div class="three wide column">
+                    <h4 class="ui inverted m-text-opacity-max">联系我</h4>
+                    <div class="ui inverted link list">
+                        <a href="#" class="item">Email：xxxxx@126.com</a>
+                        <a href="#" class="item">QQ:xxxxxxxxx</a>
+                    </div>
+                </div>
+                <!--占七分 一列 wide 填满-->
+                <div class="seven wide column">
+                    <h4 class="ui inverted m-text-opacity-max">comment</h4>
+                    <p class="m-text-thin m-text-spaced m-text-opacity-mini m-text-size-mini" >这是我的个人博客 欢迎大家参观 交流 我会分享 工作中 学习中的一些知识和方法</p>
+                    <p class="m-text-thin m-text-spaced m-text-opacity-mini m-text-size-mini" >有钱  将生活过好  没钱  将心情过好</p>
+                    <p class="m-text-thin m-text-spaced m-text-opacity-mini m-text-size-mini" >努力过 学过  用过 就好</p>
+                </div>
+            </div>
+        </div>
+        <!--横向分割线-->
+        <div class="ui inverted section divider">
+            <br>
+            <p align="center" class="m-text-thin m-text-spaced m-text-opacity-mini stackable">
+                Copyrigth @ 2016-1017 LiMingHeng Designed by Lirenmi
+            </p>
+        </div>
+    </footer>
+    <!--底部结束-->
+
+<!--cdn方式引入资源 官网直接找到链接 jquery资源 http://www.jsdelivr.com/ -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <script>
+        /*获取到导航栏上class的名称，名为：menu toggle*/
+        $('.menu.toggle ').click(function () {
+            /*再使用Jquery获取class名为 m-item，调整里边的  m-mobile-hide 样式，这个样式是我们自己写的*/
+            /*toggleClass 效果为：如果没有就显示，如果有就去掉*/
+            $('.m-item').toggleClass(' m-mobile-hide');
+        });
+
+        /*鼠标放上去，显示qq号码*/
+        $('.qq').popup();
+
+
+        /*鼠标放上去，显示微信二维码*/
+        $('.wechart').popup({
+            popup : $('.wechart-qr'),
+            //on : 'hover', /*鼠标移动到位置，出现二维码图片*/
+            position : 'bottom center' /*触发位置，下边*/
+        });
+    </script>
+</body>
+</html>

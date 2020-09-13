@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<!-- th:fragment="head" 引用的css文件，放在头部，head是自己起的名  title是参数，这个可以传递参数-->
+<head th:fragment="head(title)">
+    <meta charset="UTF-8">
+    <!--移动端预览设置-->
+    <meta name="viewport" content="width=device-width,init-scale=1.0">
+    <title th:replace="${title}">错误了</title>
+    <!--cdn方式引入资源 官网直接找到链接-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <!--引用排版插件-->
+    <link rel="stylesheet" href="../../static/css/typo.css" th:href="@{/css/typo.css}">
+    <!--引入动画插件-->
+    <link rel="stylesheet" href="../../static/css/animate.css" th:href="@{/css/animate.css}">
+    <!--引入代码高亮显示插件-->
+    <link rel="stylesheet" href="../../static/lib/prism/prism.css" th:href="@{/lib/prism/prism.css}">
+    <!--生成文章目录插件-->
+    <link rel="stylesheet" href="../../static/lib/tocbot/tocbot.css" th:href="@{/lib/tocbot/tocbot.css}">
+    <!--引入自己的css文件-->
+    <link rel="stylesheet" href="../../static/css/me.css" th:href="@{/css/me.css}">
+</head>
+<body>
+<!--导航-->
+<nav th:fragment="menu(0)" class="ui inverted attached segment m-padded-tb-mini  m-shadow-small">
+    <div class="ui container">
+        <!--stackable 适配移动端手机端-->
+        <div class="ui inverted secondary stackable menu">
+            <!--蓝色的blog的log显示-->
+            <h2 class="ui teal header item">blog</h2>
+            <!-- icon 代表图标组件
+                <i>标签，代表一个image小图标，也就是一个小的Logo图片
+                home就是个房子的图片，idea就是个灯泡的图片，tags就是标签的图片，info就是一个I的图片
+                m-mobile-hide 自己的css方法，移动端的时候，不显示导航名称，显示一个"三"按钮
+                m-item 也是class名称而已-->
+            <a href="#" class="m-item item m-mobile-hide"  th:classappend="${n==1} ? 'active'"><i class="mini home icon"></i>首页</a>
+            <a href="#" class="m-item item m-mobile-hide"  th:classappend="${n==2} ? 'active'"><i class="mini idea icon"></i>分类</a>
+            <a href="#" class="m-item item m-mobile-hide"  th:classappend="${n==3} ? 'active'"><i class="mini tags icon"></i>标签</a>
+            <a href="#" class="m-item item m-mobile-hide"  th:classappend="${n==4} ? 'active'"><i class="mini clone icon"></i>归档</a>
+            <a href="#" class="m-item item m-mobile-hide"  th:classappend="${n==5} ? 'active'"><i class="mini info icon"></i>关于我</a>
+            <!--搜索框位置-->
+            <div class="m-item right item m-mobile-hide">
+                <!--搜索框的组件 transparent 透明 -->
+                <div class="ui mobile icon input">
+                    <!--input框-->
+                    <input type="text" placeholder="Search....">
+                    <i class="search link icon"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- m-mobile-show 在移动端的时候才显示按钮，电脑端显示导航文字-->
+    <!-- menu toggle 没有什么意义，就是给jquery用，当你点击的时候，显示导航，再点击，隐藏导航，本可以是id的，这里没用id-->
+    <a href="#" class="ui icon menu toggle  black button m-button-top-right m-mobile-show">
+        <i class="sidebar icon"></i>
+    </a>
+</nav>
+
+
+<div class="m-container-small" style="padding-bottom: 8em;padding-top: 8em;max-width: 130em;">
+    <div class="ui rounded error message">
+        <div class="ui rounded container" style="padding-bottom: 6em;padding-top: 3em;">
+            <h1>500</h1>
+            <p>参数异常!!! o(╥﹏╥)o</p>
+        </div>
+    </div>
+</div>
+
+
+
+<!--底部-->
+<footer th:fragment="footer" class="ui inverted vertical segment m-padded-tb-massive m-shadow-top">
+    <div class="ui container">
+        <!--grid 列 分为16份-->
+        <div class="ui center aligned inverted divided  stackable grid">
+            <!--占三分 一列 wide 填满-->
+            <div class="three wide column">
+                <!--rounded 圆角的图片-->
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img src="../../static/image/mywx.jpg" th:src="@{/image/mywx.jpg}" class="ui rounded image"
+                             alt="博客作者微信二维码" style="width: 110px">
+                    </div>
+                </div>
+            </div>
+            <!--占三分 一列 wide 填满-->
+            <div class="three wide column">
+                <h4 class="ui inverted m-text-opacity-max">最新博客</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">用户故事（liming）</a>
+                    <a href="#" class="item">学习清单（liming）</a>
+                    <a href="#" class="item">努力学习（liming）</a>
+                </div>
+            </div>
+            <!--占三分 一列 wide 填满-->
+            <div class="three wide column">
+                <h4 class="ui inverted m-text-opacity-max">联系我</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">Email：xxxxx@126.com</a>
+                    <a href="#" class="item">QQ:xxxxxxxxx</a>
+                </div>
+            </div>
+            <!--占七分 一列 wide 填满-->
+            <div class="seven wide column">
+                <h4 class="ui inverted m-text-opacity-max">comment</h4>
+                <p class="m-text-thin m-text-spaced m-text-opacity-mini m-text-size-mini" >这是我的个人博客 欢迎大家参观 交流 我会分享 工作中 学习中的一些知识和方法</p>
+                <p class="m-text-thin m-text-spaced m-text-opacity-mini m-text-size-mini" >有钱  将生活过好  没钱  将心情过好</p>
+                <p class="m-text-thin m-text-spaced m-text-opacity-mini m-text-size-mini" >努力过 学过  用过 就好</p>
+            </div>
+        </div>
+    </div>
+    <!--横向分割线-->
+    <div class="ui inverted section divider">
+        <br>
+        <p align="center" class="m-text-thin m-text-spaced m-text-opacity-mini stackable">
+            Copyrigth @ 2016-1017 LiMingHeng Designed by Lirenmi
+        </p>
+    </div>
+</footer>
+</body>
+</html>
